@@ -1,0 +1,98 @@
+﻿@page "/Incluir"
+@using BlazorServerModelo.Data;
+<PageTitle>Incluir Amigo</PageTitle>
+
+
+<h3>Incluir Novo Cadastro</h3>
+
+<div class="container-fluid m-0 p-0">
+    <div class="row vh-100 align-items-center">
+        @*Centraliza na vertical*@
+        <div class="col-12 d-flex justify-content-center">
+            @*Centraliza na horizontal*@
+            <EditForm Model="@_amigo">
+                <div class="card text-start BordaRelevo p-4 m-0" style="border-color:black;border-style:double">
+                    <div class="card-header text-center mb-3" style="color:darkblue;font-size:22px">
+                        Amigo
+                    </div>
+                    <div class="card-body">
+                        <div class="row" style="border-top:solid 1px">
+                            <div class="col-12 d-flex flex-column">
+                                <label style="font-size:12px;margin-bottom:0;margin-top:22px">Nome</label>
+                                <input class="form-control" placeholder="Nome" type="text" @bind-value="_amigo.Nome" />
+                            </div>
+                            <div class="col-12 d-flex flex-column">
+                                <label style="font-size:12px;margin-bottom:0;margin-top:22px">Endereço</label>
+                                <input class="form-control" placeholder="Endereço" type="text" @bind-value="_amigo.Endereco" />
+                            </div>
+                            <div class="col-12 d-flex flex-column">
+                                <label style="font-size:12px;margin-bottom:0;margin-top:22px">Email</label>
+                                <input class="form-control" placeholder="Email" type="text" @bind-value="_amigo.Email" />
+                            </div>
+                            <div class="col-12 d-flex flex-column">
+                                <label style="font-size:12px;margin-bottom:0;margin-top:22px">Telefone</label>
+                                <input class="form-control" placeholder="Telefone" type="text" @bind-value="_amigo.Telefone" />
+                            </div>
+                            <div class="col-12 d-flex flex-column">
+                                <label style="font-size:12px;margin-bottom:0;margin-top:22px">Nascimento</label>
+                                <input class="form-control" placeholder="dd/mm/yyyy" type="date" @bind-value="_amigo.Nascimento" />
+                            </div>
+                        </div>
+                    </div>
+                    <DataAnnotationsValidator />
+                    <ValidationSummary/>
+
+                    <div class="card-footer text-muted rounded">
+                        <div class="row">
+
+                           <div class="col-8 p-2">
+                                <button type="submit" class="btn btn-primary" style="background-color:dodgerblue">Salvar</button>
+                            </div>
+                            <div class="col-4 p-2">
+                                <a href="Consultar" class="btn btn-danger" style="background-color:orange" >Cancelar</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+<style>
+    .BordaRelevo {
+        max-width: 400px;
+        padding: 34px;
+        box-shadow: 5px 10px 18px #888888;
+        border-radius: 9px;
+        background-color: gainsboro;
+    }
+
+</style>
+
+
+@if (_sucesso)
+{
+    <div class="text-success">
+        Pessoa inserida com sucesso
+    </div>
+}
+
+
+@code {
+    private AgendaContatos _amigo = new AgendaContatos();
+    private bool _sucesso = false;
+
+    //private async Task FormSubmit()
+    //{
+    //    // Metodo para inserir entidade amigo no banco de dados
+    //    _sucesso = true;
+    //}
+
+    //private void Cancel()
+    //{
+    //    //return;
+    //}
+}
+
